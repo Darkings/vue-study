@@ -1,0 +1,96 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Jie.Z
+ * @Date: 2020-12-12 11:00:36
+ * @LastEditTime: 2020-12-12 21:18:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .a {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .b {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+
+        .c {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+        }
+
+        .d {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="von">
+        <button type="button" @click="addOne">点击+1</button>{{count}}
+        <!-- addOne回调函数只执行一次 -->
+        <button type="button" @click.once="addOne">点击+1</button>{{count}}
+        <!-- 阻止元素a的跳转的默认行为并执行addOne函数 -->
+        <a href="www.baidu.com" @click.prevent="addOne">点击+1</a>{{count}}
+        <!-- .stop 修饰符可以阻止事件向上冒泡 -->
+        <div class="a" @click="aClick">
+            <div class="b" @click.self="bClick">
+                <!-- 当点击c元素时，a和c元素的点击事件会被执行。b元素的点击事件因为用了.self修饰符不会被执行 -->
+                <div class="c" @click="cClick">
+                    <!-- 当点击d元素时，只执行d元素绑定的事件 -->
+                    <div class="d" @click.stop="dClick"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 当c元素被点击时，触发事件的先后次序为 a事件=>b事件=>c事件 -->
+        <div class="a" @click.capture="aClick">
+            <div class="b" @click.capture="bClick">
+                <div class="c" @click.capture="cClick"></div>
+            </div>
+        </div>
+        <div></div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#von",
+            data: {
+                count: 1,
+            },
+            methods: {
+                addOne: function () {
+                    this.count++;
+                },
+                aClick: function () {
+                    console.log("祖先元素a")
+                },
+                bClick: function () {
+                    console.log("祖先元素b")
+                },
+                cClick: function () {
+                    console.log("父元素c")
+                },
+                dClick: function () {
+                    console.log("子元素d")
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

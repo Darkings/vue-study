@@ -1,0 +1,47 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Jie.Z
+ * @Date: 2020-12-12 21:05:12
+ * @LastEditTime: 2020-12-14 10:52:35
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="computed">
+        <!-- 调用函数 函数被执行打印3次 -->
+        <p v-for="count in 3">{{getMsgFunction()}}</p>
+        <!-- 调用计算属性 计算属性被执行打印1次 因为值未发生改变getMsgComputed只执行了一次 -->
+        <p v-for="count in 3">{{getMsgComputed}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#computed",
+            data: {
+                msg: "abcdef",
+            },
+            methods: {
+                getMsgFunction: function () {
+                    console.log("函数被执行");
+                    return this.msg.split("").reverse().join("");
+                }
+            },
+            computed: {
+                getMsgComputed: function () {
+                    console.log("计算属性被执行")
+                    return this.msg.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

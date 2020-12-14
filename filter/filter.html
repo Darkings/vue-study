@@ -1,0 +1,46 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Jie.Z
+ * @Date: 2020-12-12 21:58:39
+ * @LastEditTime: 2020-12-14 10:52:15
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="filter">
+        <!--  -->
+        <p>{{msg | capitalize}}</p>
+        <p>{{val1 | subtracting(val2,val3)}}</p>
+    </div>
+    <script>
+        Vue.filter("capitalize", function (val) {
+            return val.toUpperCase();
+        })
+        var vm = new Vue({
+            el: '#filter',
+            data: {
+                msg: "admin",
+                val1: 10,
+                val2: 3,
+                val3: 2,
+            },
+            filters: {
+                subtracting: function (val1, val2, val3) {
+                    console.log(val1, val2, val3);
+                    return val1 - val2 - val3;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

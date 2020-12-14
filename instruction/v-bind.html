@@ -1,0 +1,87 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Jie.Z
+ * @Date: 2020-12-12 04:26:57
+ * @LastEditTime: 2020-12-12 10:20:09
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind</title>
+  <style>
+    .big {
+      width: 200px;
+      height: 200px;
+    }
+
+    .small {
+      width: 50px;
+      height: 50px;
+    }
+
+    .shadow {
+      box-shadow: 10px 10px 5px #888888;
+    }
+  </style>
+</head>
+<script src="../js/vue.js"></script>
+
+<body>
+  <!-- <div id="vbind">
+        <img v-bind:src="imgsrc">
+        <img :class="vueclass" :src="imgsrc">
+        <img :class="[isBig?'big':'small',{'shadow':isShadow}]" :src="imgsrc">
+      </div>
+      
+      <!-- JavaScript -->
+  <!-- <script>
+        const imgvm = new Vue({
+          el: "#vbind",
+          data: {
+            isBig:false,
+            isShadow:true,
+            imgsrc: "https://cn.vuejs.org/images/logo.png",
+            vueclass:{
+                "big":true,
+                "shadow":false,
+            }
+          }
+        })
+      </script> -->
+  <div id="vbind">
+    <!-- v-bind为内联样式绑定Modal中对象 -->
+    <p :style="bindStyle">p标签内容</p>
+    <!-- v-bind为内联样式绑定对象 -->
+    <p :style="{'font-size':'30px','color':fontColor}">p标签内容</p>
+    <!-- v-bind 用数组语法为元素绑定多个对象 -->
+    <p :style="[bindStyle,backStyle]">p标签内容</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const imgvm = new Vue({
+      el: "#vbind",
+      data: {
+        isColor: true,
+        fontSize: "20px",
+        fontColor: "red",
+        imgsrc: "https://cn.vuejs.org/images/logo.png",
+        bindStyle: {
+          "font-size": "30px",
+          "color": "red",
+        },
+        backStyle: {
+          "background-color": "blue"
+        }
+      }
+    })
+  </script>
+</body>
+
+
+
+</html>

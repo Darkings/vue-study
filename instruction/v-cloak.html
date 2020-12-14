@@ -1,0 +1,42 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Jie.Z
+ * @Date: 2020-12-12 03:07:46
+ * @LastEditTime: 2020-12-12 04:03:14
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-cloak</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<script src="../js/vue.js"></script>
+
+<body>
+    <div id="app">
+        <p v-cloak>{{name}}</p>
+    </div>
+    <script>
+        // 延后加载Vue实例
+        setTimeout(() => {
+            let vue = new Vue({
+                el: "#app",
+                data: {
+                    name: "Vue Hello！"
+                }
+            })
+        }, 3000);
+    </script>
+</body>
+
+
+
+</html>

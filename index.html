@@ -1,0 +1,38 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Jie.Z
+ * @Date: 2020-12-07 23:44:22
+ * @LastEditTime: 2020-12-12 03:07:20
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 1. 导入vue.js文件 -->
+<script src="static/vue.js"></script>
+
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+    </div>
+    <script>
+        // 2. 创建一个Vue实例对象
+        let vue = new Vue({
+            // 3. 告诉Vue的实例对象，将来要控制界面的哪个区域
+            el: "#app",
+            // 4. 告诉Vue的实例对象，被控制区域的数据是什么
+            data: {
+                name: "vue-data"
+            }
+        })
+    </script>
+</body>
+
+
+
+</html>
